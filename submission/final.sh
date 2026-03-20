@@ -34,7 +34,7 @@ bitcoin-cli -regtest createwallet "treasurewallet"
 #completed
 # STUDENT TASK: Generate a new address in the treasurewallet
 # WRITE YOUR SOLUTION BELOW:
-TREASURE_ADDR=bcrt1q4v52sv4zqrxthfgpgd8g8w3736yxvazj8smffx
+TREASURE_ADDR=$(bitcoin-cli -regtest -rpcwallet=treasurewallet getnewaddress)
 check_cmd "Address generation"
 echo "Mining to address: $TREASURE_ADDR"
 
@@ -100,7 +100,7 @@ echo "-------------------------------"
 echo "Treasures have been sent to your addresses. Check how much you've collected!"
 # STUDENT TASK: Check wallet balance after receiving funds and calculate how much treasure was collected
 # WRITE YOUR SOLUTION BELOW:
-NEW_BALANCE=$(bicoin-cli -regtest -rpcwallet=btrustwallet getbalance)
+NEW_BALANCE=$(bitcoin-cli -regtest -rpcwallet=btrustwallet getbalance)
 check_cmd "New balance check"
 echo "Your treasure balance: $NEW_BALANCE BTC"
 
