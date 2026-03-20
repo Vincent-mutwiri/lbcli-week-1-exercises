@@ -41,6 +41,8 @@ echo "Mining to address: $TREASURE_ADDR"
 # Mine some blocks to get initial coins
 mine_blocks 101 $TREASURE_ADDR
 
+sleep  2
+
 # CHALLENGE PART 2: Check your starting balance 
 echo ""
 echo "CHALLENGE 2: Check your starting resources"
@@ -104,7 +106,7 @@ NEW_BALANCE=$(bitcoin-cli -regtest -rpcwallet=btrustwallet getbalance)
 check_cmd "New balance check"
 echo "Your treasure balance: $NEW_BALANCE BTC"
 
-COLLECTED=$(echo "$NEW_BALANCE-$BALANCE" | bc)
+COLLECTED=$(echo "$NEW_BALANCE - $BALANCE" | bc)
 check_cmd "Balance calculation"
 echo "You've collected $COLLECTED BTC in treasures!"
 
@@ -179,7 +181,7 @@ check_cmd "Getting address info"
 
 # STUDENT TASK: Extract the internal key (the x-only pubkey) from the descriptor
 # WRITE YOUR SOLUTION BELOW:
-INTERNAL_KEY=$(echo "$ADDR_INFO" | jq -r '.pubkey')
+INTERNAL_KEY=$(echo "$ADDR_INFO" | jq -r '.desc' | sed -E 's/.*tr\(([^)]+)\).*/\1/')
 check_cmd "Extracting key from descriptor"
 INTERNAL_KEY=$(trim "$INTERNAL_KEY")
 
