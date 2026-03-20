@@ -200,7 +200,7 @@ echo "Taproot treasure map: $TAPROOT_DESCRIPTOR"
 # WRITE YOUR SOLUTION BELOW:
 DERIVED_ADDR_RAW=$(bitcoin-cli -regtest deriveaddresses "$TAPROOT_DESCRIPTOR")
 check_cmd "Address derivation"
-DERIVED_ADDR=$(echo "$DERIVED_ADDR_RAW" | tr -d '[]" \n\t')
+DERIVED_ADDR=$(echo "$DERIVED_ADDR_RAW" | jq -r '.[0]')
 echo "Derived quantum vault address: $DERIVED_ADDR"
 
 # Verify the addresses match
