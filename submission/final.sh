@@ -31,6 +31,7 @@ echo "Now, create another wallet called 'treasurewallet' to fund your adventure"
 
 bitcoin-cli -regtest createwallet "treasurewallet"
 # Generate an address for mining in the treasure wallet
+#completed
 # STUDENT TASK: Generate a new address in the treasurewallet
 # WRITE YOUR SOLUTION BELOW:
 TREASURE_ADDR=bcrt1q4v52sv4zqrxthfgpgd8g8w3736yxvazj8smffx
